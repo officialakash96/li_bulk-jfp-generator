@@ -24,47 +24,41 @@
     <section class="about-content">
       <div class="about-card">
         <h3>Purpose</h3>
-        <p>This tool helps generate bulk JSON objects in the <strong>ManipulateValueConditionalOverwrite</strong> format. It eliminates manual JSON construction by allowing you to paste multiple value/compareValue pairs and automatically generating properly formatted JSON output.</p>
+        <p>This tool generates bulk Job Field Processor (JFP) JSON objects for various typeName operations. It eliminates manual JSON construction by allowing you to paste multiple values and automatically generating properly formatted output.</p>
       </div>
 
       <div class="about-card">
-        <h3>How It Works</h3>
+        <h3>Pages</h3>
+        <ul>
+          <li><strong>Bulk Overwrite JFPs</strong> — Generate ConditionalOverwrite, ConditionalReplace, ValueReplace, and ReplaceEmpty JFPs</li>
+          <li><strong>Bulk Ignore JFPs</strong> — Generate IgnoreContains, IgnoreEquals, IgnoreNotContains, IgnoreNotEquals, IgnoreEmpty, and IgnoreNotEmpty JFPs</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h3>Bulk Overwrite JFPs — Tabs</h3>
         <ol>
-          <li><strong>Paste bulk data</strong> — Enter multiple rows of <code>value</code> and <code>compareValue</code> pairs (tab or comma separated, like copying from Excel).</li>
-          <li><strong>Set common parameters</strong> — Select or enter values for <code>rank</code>, <code>field</code>, <code>compareField</code>, <code>sourceId</code>, and <code>fuzzyMatch</code>. These are duplicated across all rows.</li>
-          <li><strong>Generate</strong> — Click "Generate JSON" to produce the output array with constant values for <code>typeName</code>, <code>active</code>, <code>dynamic</code>, and <code>simulatorOnly</code>.</li>
+          <li><strong>Overwrite / Replace</strong> — <code>ManipulateValueConditionalOverwrite</code> or <code>ManipulateValueConditionalReplace</code>. Bulk paste <code>value</code>, <code>compareValue</code>, and optionally <code>search</code>.</li>
+          <li><strong>Value Replace</strong> — <code>ManipulateValueReplace</code>. Bulk paste <code>search</code> and <code>value</code> pairs. <code>fuzzyMatch</code> is always <code>false</code>.</li>
+          <li><strong>Replace Empty</strong> — <code>ManipulateValueReplaceEmpty</code>. Bulk paste <code>value</code> only. Output parameters contain just <code>field</code> and <code>value</code>.</li>
         </ol>
       </div>
 
       <div class="about-card">
-        <h3>Output Format</h3>
-        <pre class="json-output">[
-  {
-    "typeName": "ManipulateValueConditionalOverwrite",
-    "active": true,
-    "rank": &lt;numeric&gt;,
-    "dynamic": true,
-    "simulatorOnly": false,
-    "parameters": {
-      "compareValue": "&lt;user-input&gt;",
-      "field": "&lt;dropdown-value&gt;",
-      "compareField": "&lt;dropdown-value&gt;",
-      "value": "&lt;user-input&gt;",
-      "fuzzyMatch": false
-    },
-    "sourceId": &lt;numeric&gt;
-  }
-]</pre>
+        <h3>Bulk Ignore JFPs — Tabs</h3>
+        <ol>
+          <li><strong>IgnoreContains / IgnoreEquals / IgnoreNotContains / IgnoreNotEquals</strong> — Bulk paste values with <code>field</code> and <code>ignoreCase</code> selection.</li>
+          <li><strong>IgnoreEmpty / IgnoreNotEmpty</strong> — No value input needed. Select <code>field</code> and optionally <code>rankAbove</code>.</li>
+        </ol>
       </div>
 
       <div class="about-card">
-        <h3>Constant Values</h3>
+        <h3>Constant Values (all types)</h3>
         <table class="info-table">
           <thead>
             <tr><th>Key</th><th>Value</th></tr>
           </thead>
           <tbody>
-            <tr><td>typeName</td><td>"ManipulateValueConditionalOverwrite"</td></tr>
             <tr><td>active</td><td>true</td></tr>
             <tr><td>dynamic</td><td>true</td></tr>
             <tr><td>simulatorOnly</td><td>false</td></tr>
@@ -73,7 +67,15 @@
       </div>
 
       <div class="about-card">
-        <h3>Dropdown Options for field & compareField</h3>
+        <h3>Special Handling</h3>
+        <ul>
+          <li>When <code>field</code> or <code>compareField</code> is set to <strong>company</strong>, values are formatted as <code>urn:li:company:&lt;input&gt;</code></li>
+          <li>All other fields (including <code>companyName</code>) use the raw input as-is</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <h3>Dropdown Options for field / compareField</h3>
         <ul>
           <li>title</li>
           <li>rawLocation</li>
