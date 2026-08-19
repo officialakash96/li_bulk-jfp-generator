@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk Ignore JFPs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <h1 class="logo">Bulk JFP Generator</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ignore.html" class="active">Bulk Ignore JFPs</a></li>
+        <li><a href="about.html">About App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2>Bulk Ignore JFPs</h2>
+
+    <div class="tabs">
+      <button class="tab active" data-type="IgnoreContains">IgnoreContains</button>
+      <button class="tab" data-type="IgnoreEquals">IgnoreEquals</button>
+      <button class="tab" data-type="IgnoreNotContains">IgnoreNotContains</button>
+      <button class="tab" data-type="IgnoreNotEquals">IgnoreNotEquals</button>
+      <button class="tab" data-type="IgnoreEmpty">IgnoreEmpty</button>
+      <button class="tab" data-type="IgnoreNotEmpty">IgnoreNotEmpty</button>
+    </div>
+
+    <section class="input-section">
+      <div class="bulk-inputs">
+        <h3>Step 1: Select Type & Paste Values</h3>
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="ignoreTypeName">Type Name</label>
+          <select id="ignoreTypeName">
+            <option value="IgnoreContains">IgnoreContains</option>
+            <option value="IgnoreEquals">IgnoreEquals</option>
+            <option value="IgnoreNotContains">IgnoreNotContains</option>
+            <option value="IgnoreNotEquals">IgnoreNotEquals</option>
+            <option value="IgnoreEmpty">IgnoreEmpty</option>
+            <option value="IgnoreNotEmpty">IgnoreNotEmpty</option>
+          </select>
+        </div>
+        <div class="form-group" id="valuesGroup">
+          <label for="ignoreValuesInput">Values (one per line)</label>
+          <p class="hint">Paste multiple values, one per line.</p>
+          <textarea id="ignoreValuesInput" rows="10" placeholder="value1
+value2
+value3
+..."></textarea>
+        </div>
+      </div>
+
+      <div class="common-inputs">
+        <h3>Step 2: Set Common Parameters</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="ignoreField">Field</label>
+            <select id="ignoreField">
+              <option value="">-- Select Field --</option>
+              <option value="title">title</option>
+              <option value="rawLocation">rawLocation</option>
+              <option value="companyName">companyName</option>
+              <option value="companyApplyUrl">companyApplyUrl</option>
+              <option value="description">description</option>
+              <option value="company">company</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ignoreRank">Rank (numeric)</label>
+            <input type="number" id="ignoreRank" placeholder="e.g. 1">
+          </div>
+          <div class="form-group">
+            <label for="ignoreSourceId">Source ID (numeric)</label>
+            <input type="number" id="ignoreSourceId" placeholder="e.g. 100">
+          </div>
+          <div class="form-group" id="ignoreCaseGroup">
+            <label for="ignoreCase">Ignore Case</label>
+            <select id="ignoreCase">
+              <option value="false">false</option>
+              <option value="true">true</option>
+            </select>
+          </div>
+          <div class="form-group hidden" id="rankAboveGroup">
+            <label for="rankAbove">Rank Above (optional)</label>
+            <select id="rankAbove">
+              <option value="">-- Skip --</option>
+              <option value="API_CLIENT">Rank-1 API_CLIENT</option>
+              <option value="CLIENT">Rank-2 CLIENT</option>
+              <option value="ATS">Rank-3 ATS</option>
+              <option value="CAREER_PAGE">Rank-5 CAREER_PAGE</option>
+              <option value="JOB_BOARD">Rank-7 JOB_BOARD</option>
+              <option value="JOB_AGGREGATOR">Rank-8 JOB_AGGREGATOR</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="generateIgnoreBtn" onclick="generateIgnoreJSON()">Generate JSON</button>
+      <button id="copyIgnoreBtn" onclick="copyIgnoreOutput()" class="secondary">Copy to Clipboard</button>
+      <button id="clearIgnoreBtn" onclick="clearIgnoreAll()" class="danger">Clear All</button>
+    </div>
+
+    <section class="output-section">
+      <h3>Output JSON</h3>
+      <pre id="ignoreJsonOutput" class="json-output">Your generated JSON will appear here...</pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Bulk JFP Generator &middot; <a href="https://linkedin.com/in/akashsinghjsr" target="_blank" rel="noopener">Contact Developer</a></p>
+  </footer>
+
+  <script src="ignore.js"></script>
+</body>
+</html>
