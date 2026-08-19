@@ -204,9 +204,11 @@
   </main>
 
   <footer>
-    <p>&copy; 2026 Bulk JFP Generator &middot; <a href="https://linkedin.com/in/akashsinghjsr" target="_blank" rel="noopener">Contact Developer</a></p>
+    <p>&copy; 2026 Bulk JFP Generator &middot; <a id="contactLink" href="#" target="_blank" rel="noopener">Contact Developer</a></p>
   </footer>
 
+  <script src="config.js"></script>
   <script src="app.js"></script>
+  <script>document.getElementById('contactLink').href = CONFIG.DEVELOPER_CONTACT;</script>
 </body>
 </html>
