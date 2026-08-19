@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bulk JFP JSON Generator</title>
+  <title>Bulk Overwrite JFPs</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
     <div class="nav-container">
       <h1 class="logo">Bulk JFP Generator</h1>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html" class="active">Bulk Overwrite JFPs</a></li>
         <li><a href="ignore.html">Bulk Ignore JFPs</a></li>
         <li><a href="about.html">About App</a></li>
       </ul>
@@ -19,41 +19,53 @@
   </nav>
 
   <main class="container">
-    <h2>Generate Bulk Job Field Processors (JFP)</h2>
+    <h2>Bulk Overwrite JFPs</h2>
 
-    <section class="input-section">
+    <div class="tabs">
+      <button class="tab active" data-tab="tab1">Overwrite / Replace</button>
+      <button class="tab" data-tab="tab2">Value Replace</button>
+      <button class="tab" data-tab="tab3">Replace Empty</button>
+    </div>
+
+    <!-- Tab 1: ConditionalOverwrite / ConditionalReplace -->
+    <section class="input-section tab-content active" id="tab1">
       <div class="bulk-inputs">
-        <h3>Step 1: Paste Bulk Values</h3>
-        <div class="dual-input">
+        <h3>Step 1: Select Type & Paste Bulk Values</h3>
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label for="tab1TypeName">Type Name</label>
+          <select id="tab1TypeName">
+            <option value="ManipulateValueConditionalOverwrite">ManipulateValueConditionalOverwrite</option>
+            <option value="ManipulateValueConditionalReplace">ManipulateValueConditionalReplace</option>
+          </select>
+        </div>
+        <div class="dual-input" id="tab1BulkInputs">
           <div class="form-group">
-            <label for="valuesInput">Values (one per line)</label>
+            <label for="tab1Values">Values (one per line)</label>
             <p class="hint">Paste multiple values, one per line.</p>
-            <textarea id="valuesInput" rows="10" placeholder="value1
-value2
-value3
-..."></textarea>
+            <textarea id="tab1Values" rows="10" placeholder="value1&#10;value2&#10;value3"></textarea>
           </div>
           <div class="form-group">
-            <label for="compareValueInput">Compare Values (one per line)</label>
-            <p class="hint">Paste multiple compareValues, one per line. Must match the number of values.</p>
-            <textarea id="compareValueInput" rows="10" placeholder="compareValue1
-compareValue2
-compareValue3
-..."></textarea>
+            <label for="tab1CompareValues">Compare Values (one per line)</label>
+            <p class="hint">Must match the number of values.</p>
+            <textarea id="tab1CompareValues" rows="10" placeholder="compareValue1&#10;compareValue2&#10;compareValue3"></textarea>
           </div>
         </div>
+        <div class="form-group hidden" id="tab1SearchGroup" style="margin-top: 1rem;">
+          <label for="tab1Search">Search Values (one per line)</label>
+          <p class="hint">Paste multiple search values. Must match the number of values.</p>
+          <textarea id="tab1Search" rows="10" placeholder="search1&#10;search2&#10;search3"></textarea>
+        </div>
       </div>
-
       <div class="common-inputs">
         <h3>Step 2: Set Common Parameters</h3>
         <div class="form-grid">
           <div class="form-group">
-            <label for="rank">Rank (numeric)</label>
-            <input type="number" id="rank" placeholder="e.g. 1">
+            <label for="tab1Rank">Rank (numeric)</label>
+            <input type="number" id="tab1Rank" placeholder="e.g. 1">
           </div>
           <div class="form-group">
-            <label for="field">Field</label>
-            <select id="field">
+            <label for="tab1Field">Field</label>
+            <select id="tab1Field">
               <option value="">-- Select Field --</option>
               <option value="title">title</option>
               <option value="rawLocation">rawLocation</option>
@@ -66,8 +78,8 @@ compareValue3
             </select>
           </div>
           <div class="form-group">
-            <label for="compareField">Compare Field</label>
-            <select id="compareField">
+            <label for="tab1CompareField">Compare Field</label>
+            <select id="tab1CompareField">
               <option value="">-- Select Compare Field --</option>
               <option value="title">title</option>
               <option value="rawLocation">rawLocation</option>
@@ -80,15 +92,100 @@ compareValue3
             </select>
           </div>
           <div class="form-group">
-            <label for="sourceId">Source ID (numeric)</label>
-            <input type="number" id="sourceId" placeholder="e.g. 100">
+            <label for="tab1SourceId">Source ID (numeric)</label>
+            <input type="number" id="tab1SourceId" placeholder="e.g. 100">
           </div>
           <div class="form-group">
-            <label for="fuzzyMatch">Fuzzy Match</label>
-            <select id="fuzzyMatch">
+            <label for="tab1FuzzyMatch">Fuzzy Match</label>
+            <select id="tab1FuzzyMatch">
               <option value="false">false</option>
               <option value="true">true</option>
             </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: ManipulateValueReplace -->
+    <section class="input-section tab-content" id="tab2">
+      <div class="bulk-inputs">
+        <h3>Step 1: Paste Bulk Values</h3>
+        <div class="dual-input">
+          <div class="form-group">
+            <label for="tab2Search">Search (one per line)</label>
+            <p class="hint">Paste multiple search values, one per line.</p>
+            <textarea id="tab2Search" rows="10" placeholder="search1&#10;search2&#10;search3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="tab2Values">Values (one per line)</label>
+            <p class="hint">Must match the number of search values.</p>
+            <textarea id="tab2Values" rows="10" placeholder="value1&#10;value2&#10;value3"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="common-inputs">
+        <h3>Step 2: Set Common Parameters</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="tab2Rank">Rank (numeric)</label>
+            <input type="number" id="tab2Rank" placeholder="e.g. 1">
+          </div>
+          <div class="form-group">
+            <label for="tab2Field">Field</label>
+            <select id="tab2Field">
+              <option value="">-- Select Field --</option>
+              <option value="title">title</option>
+              <option value="rawLocation">rawLocation</option>
+              <option value="jobType">jobType</option>
+              <option value="company">company</option>
+              <option value="companyName">companyName</option>
+              <option value="companyApplyUrl">companyApplyUrl</option>
+              <option value="sourceUrl">sourceUrl</option>
+              <option value="workplaceType">workplaceType</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tab2SourceId">Source ID (numeric)</label>
+            <input type="number" id="tab2SourceId" placeholder="e.g. 100">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: ManipulateValueReplaceEmpty -->
+    <section class="input-section tab-content" id="tab3">
+      <div class="bulk-inputs">
+        <h3>Step 1: Paste Bulk Values</h3>
+        <div class="form-group">
+          <label for="tab3Values">Values (one per line)</label>
+          <p class="hint">Paste multiple values, one per line.</p>
+          <textarea id="tab3Values" rows="10" placeholder="value1&#10;value2&#10;value3"></textarea>
+        </div>
+      </div>
+      <div class="common-inputs">
+        <h3>Step 2: Set Common Parameters</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="tab3Rank">Rank (numeric)</label>
+            <input type="number" id="tab3Rank" placeholder="e.g. 1">
+          </div>
+          <div class="form-group">
+            <label for="tab3Field">Field</label>
+            <select id="tab3Field">
+              <option value="">-- Select Field --</option>
+              <option value="title">title</option>
+              <option value="rawLocation">rawLocation</option>
+              <option value="jobType">jobType</option>
+              <option value="company">company</option>
+              <option value="companyName">companyName</option>
+              <option value="companyApplyUrl">companyApplyUrl</option>
+              <option value="sourceUrl">sourceUrl</option>
+              <option value="workplaceType">workplaceType</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tab3SourceId">Source ID (numeric)</label>
+            <input type="number" id="tab3SourceId" placeholder="e.g. 100">
           </div>
         </div>
       </div>

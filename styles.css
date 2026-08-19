@@ -312,6 +312,14 @@ button.danger:hover {
   box-shadow: none;
 }
 
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: flex;
+}
+
 /* Footer */
 footer {
   text-align: center;
