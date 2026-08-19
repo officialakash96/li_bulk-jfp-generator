@@ -56,6 +56,7 @@ function generateIgnoreJSON() {
     }];
 
     document.getElementById('ignoreJsonOutput').textContent = JSON.stringify(results, null, 2);
+    document.getElementById('ignoreJsonOutput').scrollIntoView({ behavior: 'smooth', block: 'start' });
     return;
   }
 
@@ -92,6 +93,7 @@ function generateIgnoreJSON() {
   }
 
   document.getElementById('ignoreJsonOutput').textContent = JSON.stringify(results, null, 2);
+  document.getElementById('ignoreJsonOutput').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function copyIgnoreOutput() {

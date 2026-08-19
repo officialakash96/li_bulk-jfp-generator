@@ -86,6 +86,7 @@ function generateTab1() {
     });
   }
   document.getElementById('jsonOutput').textContent = JSON.stringify(results, null, 2);
+  scrollToOutput();
 }
 
 function generateTab2() {
@@ -132,6 +133,7 @@ function generateTab2() {
     });
   }
   document.getElementById('jsonOutput').textContent = JSON.stringify(results, null, 2);
+  scrollToOutput();
 }
 
 function generateTab3() {
@@ -164,6 +166,7 @@ function generateTab3() {
     });
   }
   document.getElementById('jsonOutput').textContent = JSON.stringify(results, null, 2);
+  scrollToOutput();
 }
 
 function copyOutput() {
@@ -177,6 +180,10 @@ function copyOutput() {
     btn.textContent = 'Copied!';
     setTimeout(() => { btn.textContent = 'Copy to Clipboard'; }, 2000);
   });
+}
+
+function scrollToOutput() {
+  document.getElementById('jsonOutput').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function clearAll() {
