@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Bulk JFP JSON Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <h1 class="logo">Bulk JFP Generator</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ignore.html">Bulk Ignore JFPs</a></li>
+        <li><a href="about.html" class="active">About App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2>About This Application</h2>
+
+    <section class="about-content">
+      <div class="about-card">
+        <h3>Purpose</h3>
+        <p>This tool helps generate bulk JSON objects in the <strong>ManipulateValueConditionalOverwrite</strong> format. It eliminates manual JSON construction by allowing you to paste multiple value/compareValue pairs and automatically generating properly formatted JSON output.</p>
+      </div>
+
+      <div class="about-card">
+        <h3>How It Works</h3>
+        <ol>
+          <li><strong>Paste bulk data</strong> — Enter multiple rows of <code>value</code> and <code>compareValue</code> pairs (tab or comma separated, like copying from Excel).</li>
+          <li><strong>Set common parameters</strong> — Select or enter values for <code>rank</code>, <code>field</code>, <code>compareField</code>, <code>sourceId</code>, and <code>fuzzyMatch</code>. These are duplicated across all rows.</li>
+          <li><strong>Generate</strong> — Click "Generate JSON" to produce the output array with constant values for <code>typeName</code>, <code>active</code>, <code>dynamic</code>, and <code>simulatorOnly</code>.</li>
+        </ol>
+      </div>
+
+      <div class="about-card">
+        <h3>Output Format</h3>
+        <pre class="json-output">[
+  {
+    "typeName": "ManipulateValueConditionalOverwrite",
+    "active": true,
+    "rank": &lt;numeric&gt;,
+    "dynamic": true,
+    "simulatorOnly": false,
+    "parameters": {
+      "compareValue": "&lt;user-input&gt;",
+      "field": "&lt;dropdown-value&gt;",
+      "compareField": "&lt;dropdown-value&gt;",
+      "value": "&lt;user-input&gt;",
+      "fuzzyMatch": false
+    },
+    "sourceId": &lt;numeric&gt;
+  }
+]</pre>
+      </div>
+
+      <div class="about-card">
+        <h3>Constant Values</h3>
+        <table class="info-table">
+          <thead>
+            <tr><th>Key</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>typeName</td><td>"ManipulateValueConditionalOverwrite"</td></tr>
+            <tr><td>active</td><td>true</td></tr>
+            <tr><td>dynamic</td><td>true</td></tr>
+            <tr><td>simulatorOnly</td><td>false</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="about-card">
+        <h3>Dropdown Options for field & compareField</h3>
+        <ul>
+          <li>title</li>
+          <li>rawLocation</li>
+          <li>jobType</li>
+          <li>company</li>
+          <li>companyName</li>
+          <li>companyApplyUrl</li>
+          <li>sourceUrl</li>
+          <li>workplaceType</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Bulk JFP Generator &middot; <a href="https://linkedin.com/in/akashsinghjsr" target="_blank" rel="noopener">Contact Developer</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bulk JFP JSON Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <h1 class="logo">Bulk JFP Generator</h1>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="ignore.html">Bulk Ignore JFPs</a></li>
+        <li><a href="about.html">About App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2>Generate Bulk Job Field Processors (JFP)</h2>
+
+    <section class="input-section">
+      <div class="bulk-inputs">
+        <h3>Step 1: Paste Bulk Values</h3>
+        <div class="dual-input">
+          <div class="form-group">
+            <label for="valuesInput">Values (one per line)</label>
+            <p class="hint">Paste multiple values, one per line.</p>
+            <textarea id="valuesInput" rows="10" placeholder="value1
+value2
+value3
+..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="compareValueInput">Compare Values (one per line)</label>
+            <p class="hint">Paste multiple compareValues, one per line. Must match the number of values.</p>
+            <textarea id="compareValueInput" rows="10" placeholder="compareValue1
+compareValue2
+compareValue3
+..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="common-inputs">
+        <h3>Step 2: Set Common Parameters</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="rank">Rank (numeric)</label>
+            <input type="number" id="rank" placeholder="e.g. 1">
+          </div>
+          <div class="form-group">
+            <label for="field">Field</label>
+            <select id="field">
+              <option value="">-- Select Field --</option>
+              <option value="title">title</option>
+              <option value="rawLocation">rawLocation</option>
+              <option value="jobType">jobType</option>
+              <option value="company">company</option>
+              <option value="companyName">companyName</option>
+              <option value="companyApplyUrl">companyApplyUrl</option>
+              <option value="sourceUrl">sourceUrl</option>
+              <option value="workplaceType">workplaceType</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="compareField">Compare Field</label>
+            <select id="compareField">
+              <option value="">-- Select Compare Field --</option>
+              <option value="title">title</option>
+              <option value="rawLocation">rawLocation</option>
+              <option value="jobType">jobType</option>
+              <option value="company">company</option>
+              <option value="companyName">companyName</option>
+              <option value="companyApplyUrl">companyApplyUrl</option>
+              <option value="sourceUrl">sourceUrl</option>
+              <option value="workplaceType">workplaceType</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="sourceId">Source ID (numeric)</label>
+            <input type="number" id="sourceId" placeholder="e.g. 100">
+          </div>
+          <div class="form-group">
+            <label for="fuzzyMatch">Fuzzy Match</label>
+            <select id="fuzzyMatch">
+              <option value="false">false</option>
+              <option value="true">true</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="generateBtn" onclick="generateJSON()">Generate JSON</button>
+      <button id="copyBtn" onclick="copyOutput()" class="secondary">Copy to Clipboard</button>
+      <button id="clearBtn" onclick="clearAll()" class="danger">Clear All</button>
+    </div>
+
+    <section class="output-section">
+      <h3>Output JSON</h3>
+      <pre id="jsonOutput" class="json-output">Your generated JSON will appear here...</pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Bulk JFP Generator &middot; <a href="https://linkedin.com/in/akashsinghjsr" target="_blank" rel="noopener">Contact Developer</a></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
