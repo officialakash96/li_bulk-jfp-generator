@@ -110,7 +110,11 @@ function generateTab2() {
   const results = [];
   for (let i = 0; i < values.length; i++) {
     let value = values[i].trim();
-    if (field === 'company') value = 'urn:li:company:' + value;
+    let search = searches[i].trim();
+    if (field === 'company') {
+      value = 'urn:li:company:' + value;
+      search = 'urn:li:company:' + search;
+    }
 
     results.push({
       typeName: "ManipulateValueReplace",
@@ -119,7 +123,7 @@ function generateTab2() {
       dynamic: true,
       simulatorOnly: false,
       parameters: {
-        search: searches[i].trim(),
+        search: search,
         field: field,
         value: value,
         fuzzyMatch: false
