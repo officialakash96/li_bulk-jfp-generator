@@ -1,3 +1,13 @@
+const WORKPLACE_TYPE_MAP = {
+  'on-site': 'urn:li:workplaceType:1',
+  'remote': 'urn:li:workplaceType:2',
+  'hybrid': 'urn:li:workplaceType:3'
+};
+
+function mapWorkplaceType(val) {
+  return WORKPLACE_TYPE_MAP[val.toLowerCase()] || val;
+}
+
 // Tab switching
 let activeTab = 'tab1';
 
@@ -62,7 +72,9 @@ function generateTab1() {
     let value = values[i].trim();
     let compareValue = compareValues[i].trim();
     if (field === 'company') value = 'urn:li:company:' + value;
+    if (field === 'workplaceTypes') value = mapWorkplaceType(value);
     if (compareField === 'company') compareValue = 'urn:li:company:' + compareValue;
+    if (compareField === 'workplaceTypes') compareValue = mapWorkplaceType(compareValue);
 
     const params = {
       compareValue: compareValue,
@@ -116,6 +128,10 @@ function generateTab2() {
       value = 'urn:li:company:' + value;
       search = 'urn:li:company:' + search;
     }
+    if (field === 'workplaceTypes') {
+      value = mapWorkplaceType(value);
+      search = mapWorkplaceType(search);
+    }
 
     results.push({
       typeName: "ManipulateValueReplace",
@@ -151,6 +167,7 @@ function generateTab3() {
   for (const line of values) {
     let value = line.trim();
     if (field === 'company') value = 'urn:li:company:' + value;
+    if (field === 'workplaceTypes') value = mapWorkplaceType(value);
 
     results.push({
       typeName: "ManipulateValueReplaceEmpty",

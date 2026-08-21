@@ -1,3 +1,13 @@
+const WORKPLACE_TYPE_MAP = {
+  'on-site': 'urn:li:workplaceType:1',
+  'remote': 'urn:li:workplaceType:2',
+  'hybrid': 'urn:li:workplaceType:3'
+};
+
+function mapWorkplaceType(val) {
+  return WORKPLACE_TYPE_MAP[val.toLowerCase()] || val;
+}
+
 // Tab switching syncs with dropdown
 document.querySelectorAll('.tab').forEach(tab => {
   tab.addEventListener('click', () => {
@@ -75,6 +85,9 @@ function generateIgnoreJSON() {
     let value = line.trim();
     if (field === 'company') {
       value = 'urn:li:company:' + value;
+    }
+    if (field === 'workplaceTypes') {
+      value = mapWorkplaceType(value);
     }
 
     results.push({
