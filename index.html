@@ -13,6 +13,7 @@
       <ul class="nav-links">
         <li><a href="index.html" class="active">Bulk Overwrite JFPs</a></li>
         <li><a href="ignore.html">Bulk Ignore JFPs</a></li>
+        <li><a href="replace-empty.html">Other JFP Operations</a></li>
         <li><a href="about.html">About App</a></li>
       </ul>
     </div>
@@ -24,7 +25,6 @@
     <div class="tabs">
       <button class="tab active" data-tab="tab1">Conditional Overwrite/Replace</button>
       <button class="tab" data-tab="tab2">ManipulateValueReplace</button>
-      <button class="tab" data-tab="tab3">ManipulateValueReplaceEmpty</button>
     </div>
 
     <!-- Tab 1: ConditionalOverwrite / ConditionalReplace -->
@@ -155,45 +155,7 @@
       </div>
     </section>
 
-    <!-- Tab 3: ManipulateValueReplaceEmpty -->
-    <section class="input-section tab-content" id="tab3">
-      <div class="bulk-inputs">
-        <h3>Step 1: Paste Bulk Values</h3>
-        <div class="form-group">
-          <label for="tab3Values">Values (one per line)</label>
-          <p class="hint">Paste multiple values, one per line.</p>
-          <textarea id="tab3Values" rows="10" placeholder="value1&#10;value2&#10;value3"></textarea>
-        </div>
-      </div>
-      <div class="common-inputs">
-        <h3>Step 2: Set Common Parameters</h3>
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="tab3Rank">Rank (numeric)</label>
-            <input type="number" id="tab3Rank" placeholder="e.g. 1">
-          </div>
-          <div class="form-group">
-            <label for="tab3Field">Field</label>
-            <select id="tab3Field">
-              <option value="">-- Select Field --</option>
-              <option value="title">title</option>
-              <option value="rawLocation">rawLocation</option>
-              <option value="jobType">jobType</option>
-              <option value="company">company</option>
-              <option value="companyName">companyName</option>
-              <option value="companyApplyUrl">companyApplyUrl</option>
-              <option value="sourceUrl">sourceUrl</option>
-              <option value="workplaceTypes">workplaceTypes</option>
-              <option value="description">description</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="tab3SourceId">Source ID (numeric)</label>
-            <input type="number" id="tab3SourceId" placeholder="e.g. 100">
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <div class="actions">
       <button id="generateBtn" onclick="generateJSON()">Generate JSON</button>

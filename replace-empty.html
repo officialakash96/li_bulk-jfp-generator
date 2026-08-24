@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Other JFP Operations</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <h1 class="logo"><a href="index.html"><img src="images/li_logo.png" alt="LinkedIn" class="logo-img">Bulk JFP Generator</a></h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Bulk Overwrite JFPs</a></li>
+        <li><a href="ignore.html">Bulk Ignore JFPs</a></li>
+        <li><a href="replace-empty.html" class="active">Other JFP Operations</a></li>
+        <li><a href="about.html">About App</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <h2>Other JFP Operations</h2>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="replaceEmptyTab">ManipulateReplaceEmpty</button>
+      <button class="tab" data-tab="ignoreEmptyTab">IgnoreEmpty</button>
+      <button class="tab" data-tab="ignoreNotEmptyTab">IgnoreNotEmpty</button>
+    </div>
+
+    <section class="input-section tab-content active" id="replaceEmptyTab">
+      <div class="bulk-inputs">
+        <h3>Step 1: Paste value to replace</h3>
+        <div class="form-group">
+          <label for="replaceEmptyValue">Value</label>
+          <p class="hint">Enter the value to replace empty field with.</p>
+          <input type="text" id="replaceEmptyValue" placeholder="e.g. Software Engineer">
+        </div>
+      </div>
+      <div class="common-inputs">
+        <h3>Step 2: Set Common Parameters</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="replaceEmptyRank">Rank (numeric)</label>
+            <input type="number" id="replaceEmptyRank" placeholder="e.g. 1">
+          </div>
+          <div class="form-group">
+            <label for="replaceEmptyField">Field</label>
+            <select id="replaceEmptyField">
+              <option value="">-- Select Field --</option>
+              <option value="title">title</option>
+              <option value="rawLocation">rawLocation</option>
+              <option value="jobType">jobType</option>
+              <option value="company">company</option>
+              <option value="companyName">companyName</option>
+              <option value="companyApplyUrl">companyApplyUrl</option>
+              <option value="sourceUrl">sourceUrl</option>
+              <option value="workplaceTypes">workplaceTypes</option>
+              <option value="description">description</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="replaceEmptySourceId">Source ID (numeric)</label>
+            <input type="number" id="replaceEmptySourceId" placeholder="e.g. 100">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IgnoreEmpty Tab -->
+    <section class="input-section tab-content" id="ignoreEmptyTab">
+      <div class="common-inputs">
+        <h3>Step 1: Set Parameters</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="ignoreEmptyField">Field</label>
+            <select id="ignoreEmptyField">
+              <option value="">-- Select Field --</option>
+              <option value="title">title</option>
+              <option value="rawLocation">rawLocation</option>
+              <option value="jobType">jobType</option>
+              <option value="company">company</option>
+              <option value="companyName">companyName</option>
+              <option value="companyApplyUrl">companyApplyUrl</option>
+              <option value="sourceUrl">sourceUrl</option>
+              <option value="workplaceTypes">workplaceTypes</option>
+              <option value="description">description</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ignoreEmptyRank">Rank (numeric)</label>
+            <input type="number" id="ignoreEmptyRank" placeholder="e.g. 1">
+          </div>
+          <div class="form-group">
+            <label for="ignoreEmptySourceId">Source ID (numeric)</label>
+            <input type="number" id="ignoreEmptySourceId" placeholder="e.g. 100">
+          </div>
+          <div class="form-group">
+            <label for="ignoreEmptyRankAbove">Rank Above (optional)</label>
+            <select id="ignoreEmptyRankAbove">
+              <option value="">-- Skip --</option>
+              <option value="API_CLIENT">Rank-1 API_CLIENT</option>
+              <option value="CLIENT">Rank-2 CLIENT</option>
+              <option value="ATS">Rank-3 ATS</option>
+              <option value="CAREER_PAGE">Rank-5 CAREER_PAGE</option>
+              <option value="JOB_BOARD">Rank-7 JOB_BOARD</option>
+              <option value="JOB_AGGREGATOR">Rank-8 JOB_AGGREGATOR</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- IgnoreNotEmpty Tab -->
+    <section class="input-section tab-content" id="ignoreNotEmptyTab">
+      <div class="common-inputs">
+        <h3>Step 1: Set Parameters</h3>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="ignoreNotEmptyField">Field</label>
+            <select id="ignoreNotEmptyField">
+              <option value="">-- Select Field --</option>
+              <option value="title">title</option>
+              <option value="rawLocation">rawLocation</option>
+              <option value="jobType">jobType</option>
+              <option value="company">company</option>
+              <option value="companyName">companyName</option>
+              <option value="companyApplyUrl">companyApplyUrl</option>
+              <option value="sourceUrl">sourceUrl</option>
+              <option value="workplaceTypes">workplaceTypes</option>
+              <option value="description">description</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ignoreNotEmptyRank">Rank (numeric)</label>
+            <input type="number" id="ignoreNotEmptyRank" placeholder="e.g. 1">
+          </div>
+          <div class="form-group">
+            <label for="ignoreNotEmptySourceId">Source ID (numeric)</label>
+            <input type="number" id="ignoreNotEmptySourceId" placeholder="e.g. 100">
+          </div>
+          <div class="form-group">
+            <label for="ignoreNotEmptyRankAbove">Rank Above (optional)</label>
+            <select id="ignoreNotEmptyRankAbove">
+              <option value="">-- Skip --</option>
+              <option value="API_CLIENT">Rank-1 API_CLIENT</option>
+              <option value="CLIENT">Rank-2 CLIENT</option>
+              <option value="ATS">Rank-3 ATS</option>
+              <option value="CAREER_PAGE">Rank-5 CAREER_PAGE</option>
+              <option value="JOB_BOARD">Rank-7 JOB_BOARD</option>
+              <option value="JOB_AGGREGATOR">Rank-8 JOB_AGGREGATOR</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button id="generateBtn" onclick="generateOtherJSON()">Generate JSON</button>
+      <button id="copyBtn" onclick="copyOutput()" class="secondary">Copy to Clipboard</button>
+      <button id="clearBtn" onclick="clearAll()" class="danger">Clear All</button>
+    </div>
+
+    <section class="output-section">
+      <h3>Output JSON</h3>
+      <pre id="jsonOutput" class="json-output">Your generated JSON will appear here...</pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Bulk JFP Generator &middot; <a id="contactLink" href="#" target="_blank" rel="noopener">Contact Developer</a></p>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="other-ops.js"></script>
+  <script>document.getElementById('contactLink').href = CONFIG.DEVELOPER_CONTACT;</script>
+</body>
+</html>

@@ -4,8 +4,24 @@ const WORKPLACE_TYPE_MAP = {
   'hybrid': 'urn:li:workplaceType:3'
 };
 
+const JOB_TYPE_MAP = {
+  'full time': 'FULL_TIME',
+  'full-time': 'FULL_TIME',
+  'part time': 'PART_TIME',
+  'part-time': 'PART_TIME',
+  'temporary': 'TEMPORARY',
+  'volunteer': 'VOLUNTEER',
+  'contract': 'CONTRACT',
+  'internship': 'INTERNSHIP',
+  'other': 'OTHER'
+};
+
 function mapWorkplaceType(val) {
   return WORKPLACE_TYPE_MAP[val.toLowerCase()] || val;
+}
+
+function mapJobType(val) {
+  return JOB_TYPE_MAP[val.toLowerCase()] || val;
 }
 
 // Tab switching
@@ -22,15 +38,16 @@ document.querySelectorAll('.tabs .tab').forEach(tab => {
 });
 
 // Show/hide search field for ConditionalReplace in Tab 1
-document.getElementById('tab1TypeName').addEventListener('change', function() {
-  const isReplace = this.value === 'ManipulateValueConditionalReplace';
-  document.getElementById('tab1SearchGroup').classList.toggle('hidden', !isReplace);
-});
+if (document.getElementById('tab1TypeName')) {
+  document.getElementById('tab1TypeName').addEventListener('change', function() {
+    const isReplace = this.value === 'ManipulateValueConditionalReplace';
+    document.getElementById('tab1SearchGroup').classList.toggle('hidden', !isReplace);
+  });
+}
 
 function generateJSON() {
   if (activeTab === 'tab1') generateTab1();
   else if (activeTab === 'tab2') generateTab2();
-  else if (activeTab === 'tab3') generateTab3();
 }
 
 function generateTab1() {
@@ -73,8 +90,10 @@ function generateTab1() {
     let compareValue = compareValues[i].trim();
     if (field === 'company') value = 'urn:li:company:' + value;
     if (field === 'workplaceTypes') value = mapWorkplaceType(value);
+    if (field === 'jobType') value = mapJobType(value);
     if (compareField === 'company') compareValue = 'urn:li:company:' + compareValue;
     if (compareField === 'workplaceTypes') compareValue = mapWorkplaceType(compareValue);
+    if (compareField === 'jobType') compareValue = mapJobType(compareValue);
 
     const params = {
       compareValue: compareValue,
@@ -132,6 +151,10 @@ function generateTab2() {
       value = mapWorkplaceType(value);
       search = mapWorkplaceType(search);
     }
+    if (field === 'jobType') {
+      value = mapJobType(value);
+      search = mapJobType(search);
+    }
 
     results.push({
       typeName: "ManipulateValueReplace",
@@ -144,40 +167,6 @@ function generateTab2() {
         field: field,
         value: value,
         fuzzyMatch: false
-      },
-      sourceId: parseInt(sourceId, 10)
-    });
-  }
-  document.getElementById('jsonOutput').textContent = JSON.stringify(results, null, 2);
-  scrollToOutput();
-}
-
-function generateTab3() {
-  const valuesText = document.getElementById('tab3Values').value.trim();
-  const rank = document.getElementById('tab3Rank').value;
-  const field = document.getElementById('tab3Field').value;
-  const sourceId = document.getElementById('tab3SourceId').value;
-
-  if (!valuesText) { alert('Please paste values.'); return; }
-  if (!rank || !field || !sourceId) { alert('Please fill in all common parameters.'); return; }
-
-  const values = valuesText.split('\n').filter(l => l.trim());
-  const results = [];
-
-  for (const line of values) {
-    let value = line.trim();
-    if (field === 'company') value = 'urn:li:company:' + value;
-    if (field === 'workplaceTypes') value = mapWorkplaceType(value);
-
-    results.push({
-      typeName: "ManipulateValueReplaceEmpty",
-      active: true,
-      rank: parseInt(rank, 10),
-      dynamic: true,
-      simulatorOnly: false,
-      parameters: {
-        field: field,
-        value: value
       },
       sourceId: parseInt(sourceId, 10)
     });
